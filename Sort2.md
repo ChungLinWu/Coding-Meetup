@@ -240,7 +240,9 @@ public class HeapSort {
 缺點：非穩定排序、需要額外記憶體空間<br/>
 
 ### Cocktail Sort
-冒泡排序法的變形，在序列中雙向進行排序，故也稱來回排序、快樂小時排序(?。
+冒泡排序法的變形，在序列中雙向進行排序，故也稱來回排序、快樂小時排序(?。<br/>
+![Sorting_shaker_sort_anim](https://user-images.githubusercontent.com/89962742/233787312-49869e09-8732-45cd-b095-c4563d518878.gif)
+
 ```JAVA
 public class CockTailSort {
 	public static void cocktailSort(int[] arr) {
@@ -336,3 +338,25 @@ Constraints:
 
 Sol.<br/>
 <img width="603" alt="image" src="https://user-images.githubusercontent.com/89962742/233784256-fb2ba7f5-76d7-47c2-9171-7a90c759f743.png">
+
+
+### Bonus Kadane Algorithm  
+数列的一维方向找到一个连续的子数列，使该子数列的和最大。例如，对一个数列 −2, 1, −3, 4, −1, 2, 1, −5, 4，其连续子数列中和最大的是 4, −1, 2, 1, 其和为6。
+```JAVA
+public class KadaneAlgorithm {
+
+	public static void main(String[] args) {
+		int[] inputArray = new int[] { (-2), 1, (-3), 4, 1, (-6)};
+		int max = maxSubArraySum(inputArray);
+		System.out.println(max);
+	}
+	public static int maxSubArraySum(int[] nums) {
+	    int maxSum = nums[0], currentSum = nums[0];
+	    for (int i = 1; i < nums.length; i++) {
+	        currentSum = Math.max(nums[i], currentSum + nums[i]);
+	        maxSum = Math.max(maxSum, currentSum);
+	    }
+	    return maxSum;
+	}
+}
+```
